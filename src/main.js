@@ -92,17 +92,6 @@ function hideLoadMoreButton() {
   document.querySelector('.galleryBtn').style.display = 'none';
 }
 
-function renderGalleryAppend(images) {
-  const fragment = document.createDocumentFragment();
-  images.forEach(imageData => {
-    const img = document.createElement('img');
-    img.src = imageData.webformatURL;
-    img.alt = imageData.tags;
-    fragment.appendChild(img);
-  });
-  gallery.appendChild(fragment);
-}
-
 function loadImages() {
   fetchImages(currentQuery, currentPage, perPage)
     .then(data => {
@@ -113,7 +102,7 @@ function loadImages() {
           message: "We're sorry, but you've reached the end of search results.",
         });
       } else {
-        renderGalleryAppend(data.hits);
+        renderGallery(data.hits);
         currentPage++;
         smoothScroll();
       }

@@ -18,8 +18,7 @@ export function renderGallery(images) {
     })
     .join('');
 
-  galleryContainer.innerHTML = markup;
-  const lightbox = new SimpleLightbox('.gallery-item');
+  galleryContainer.insertAdjacentHTML('beforeend', markup);
   lightbox.refresh();
 }
 
@@ -27,3 +26,4 @@ export function clearGallery() {
   const galleryContainer = document.querySelector('.galleriesBox');
   galleryContainer.innerHTML = '';
 }
+const lightbox = new SimpleLightbox('.gallery-item');
